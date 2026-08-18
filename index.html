@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#111827">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Punktezähler">
+  <title>Punktezähler</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">SPIELRUNDE</p>
+        <h1>Punktezähler</h1>
+      </div>
+      <button id="settingsButton" class="icon-button" aria-label="Dashboard öffnen">⚙︎</button>
+    </header>
+
+    <section id="dashboard" class="dashboard">
+      <div class="dashboard-head">
+        <div>
+          <p class="eyebrow">DASHBOARD</p>
+          <h2>Spiel vorbereiten</h2>
+        </div>
+        <span id="playerCountLabel" class="count-pill">2 Spieler</span>
+      </div>
+
+      <label class="range-label" for="playerCount">
+        Anzahl Spieler
+        <input id="playerCount" type="range" min="2" max="6" step="1" value="2">
+      </label>
+
+      <div id="nameFields" class="name-fields"></div>
+      <button id="startButton" class="primary-button">Spielrunde starten</button>
+    </section>
+
+    <section id="game" class="game" hidden>
+      <div id="players" class="players"></div>
+      <div class="game-actions">
+        <button id="undoButton" class="secondary-button" disabled>↶ Rückgängig</button>
+        <button id="resetButton" class="danger-button">Alle auf 0</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="resetDialog">
+    <form method="dialog">
+      <h2>Spielstand zurücksetzen?</h2>
+      <p>Alle Punkte werden auf 0 gesetzt. Die Spielernamen bleiben erhalten.</p>
+      <div class="dialog-actions">
+        <button value="cancel" class="secondary-button">Abbrechen</button>
+        <button id="confirmReset" value="confirm" class="danger-button">Zurücksetzen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
